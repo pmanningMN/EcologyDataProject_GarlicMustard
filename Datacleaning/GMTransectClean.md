@@ -693,3 +693,9 @@ CheckSquaresGM(GMdata)
     ## [1] "difference between GM_START and GM_END is less than .2 at 831 174 17.11 16.93"
     ## [1] "difference between STEM_START and STEM_END is less than .2 at 831 174 17.11 16.93"
     ## [1] "checking 832174"
+    
+Now you after you clean the data for the above noted mistakes, you only need to export the data as GMdata.csv (change the title in the quotes if needed)
+    
+```r
+write.csv(GMdata, "GMdata.csv")
+```
