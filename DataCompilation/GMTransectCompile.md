@@ -57,8 +57,11 @@ uniquesimple=dense_rank(uniqueraw)
 Newunique=na.locf(uniquesimple)
 GMdata$UniqueID=Newunique
 ```
+###Calculating Overlap
 
-Now the overlap values can be calculated for each individual transect coordinate. These values are then added to the overlap list variable. These are done in order so the first list item of overlap will match the first list item for Unique.ID.
+Because Garlic Mustard has a two year life cycle, there are two life stages of Garlic Mustard: Rosette and Stem. These may compete with each other so we would like to measure how often these two types of Garlic Mustard share a transect length. To do this we must calculate the value of overlap.
+
+Previously overlap could be roughly calculated by assuming that [PercentOverlap = (PercentGM -( PercentRose + PercentStem))] However this is an assumption that is not alway accurate. In this new overlap calculation values created by the overlap function are added to the overlap list variable. These are done in order so the first list item of overlap will match the first list item for Unique.ID.
 
 This function calculates overlap by checking for the following 9 conditions (for all non NA values):
 
@@ -137,8 +140,9 @@ print(overlap)
     ## [295] 0.35 0.08 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.06
     ## [309] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.02 0.00 0.00 0.00 0.07 0.00 0.00
 
+### Calculating the summary data per transect coordinate
+
 Build an empty dataframe in order to compile the data on each transect
-======================================================================
 
 ``` r
 IndivTransectdf = data.frame(matrix(vector(), 0, 13, dimnames=list(c(), c("X", "Y", "Unique ID", "Percent GM","Percent Rosettes", "Percent Stems","Num Stems","Num Aphids","Num Miners","Num Other","Total Possible Length", "Overlap Length", "Percent Overlap"))))
@@ -268,6 +272,7 @@ head(IndivTransectdf, n=20)
 ``` r
 write.csv(IndivTransectdf, file = "GMoutputIndivTransects.csv")
 ```
+###Calculating the summary of a square of transects.
 
 Now we want to find the spatial representation of the data in terms of a square of area. This data will be easier to visualize spatially than individual transects lines. In this case each square will equal 3 adjacent transects. (ex. 810,170 & 811,170 & 812,170)
 
