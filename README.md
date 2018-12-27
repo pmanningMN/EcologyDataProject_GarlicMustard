@@ -5,3 +5,4 @@ Project overview: At the Ordway Field Station in Inver Grove Heights Minnesota, 
 
 GMTransectClean.md is a R markdown file of a process to clean the data coming from seperate field recording instruments. Main causes of data entry error are screened for to be caught before summary and analysis.
 
+GMTransectCompile.md is an R markdown file of how to clean the ecology data in it's raw and cleaned form and return summary statistics for each transect line and then a summary of 3 adjacent transects to find the cover in a square area.
